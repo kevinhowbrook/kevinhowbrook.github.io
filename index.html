@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Image Background</title>
+    <title>keivn howbrook</title>
     <style>
         body {
             margin: 0;
@@ -12,22 +12,51 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden; /* Hide any overflowing content */
+        }
+
+        .parallax-bg {
+            position: relative;
+            width: 100%;
+            height: 100%;
             background-image: url('images/1.png');
             background-size: cover;
             background-position: center;
-            color: white;
-            font-size: 24px;
+            transform-style: preserve-3d; /* Enable 3D space for parallax effect */
         }
 
         .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
-    <div class="text">
-        One lifetime is not enough
+    <div class="parallax-bg">
+        <div class="text">
+            One lifetime is not enough
+        </div>
     </div>
+
+    <script>
+        // Get the parallax background element
+        const parallaxBg = document.querySelector('.parallax-bg');
+
+        // Listen for mousemove event
+        document.addEventListener('mousemove', (e) => {
+            // Calculate the position for the background image
+            const posX = -e.clientX / 50; // Adjust the 50 to control the parallax effect strength
+            const posY = -e.clientY / 50;
+
+            // Apply the transform to create the parallax effect
+            parallaxBg.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+        });
+    </script>
 </body>
 </html>
