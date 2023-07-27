@@ -1,0 +1,12 @@
+*.pyc
+.DS_Store
+*.swp
+/venv/
+.venv
+/static/
+/media/
+.env
+*.sqlite3
+node_modules
+package-lock.json
+.vscode
